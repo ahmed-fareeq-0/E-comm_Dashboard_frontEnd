@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
+// import Private from "./components/privateComponent/Private.jsx";
 import SignUp from "./pages/signUp/SignUp";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
           <Routes>
+          {/* <Route  element={<Private />} /> */}
             <Route path="/"  element={<h1>Product</h1>} />
             <Route path="/add" element={<h1>add Product</h1>} />
             <Route path="/update" element={<h1>update Product</h1>} />
