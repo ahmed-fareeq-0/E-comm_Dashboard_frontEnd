@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styleSignup.scss';
-
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -9,13 +9,23 @@ const SignUp = () => {
 	const [name, setName] = useState()
 	const [email,setEmail] = useState()
 	const [pass, setPass] = useState()
+	const navigate = useNavigate()
 
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(name);
-		console.log(email);
-		console.log(pass);
+
+		let result = await fetch('http://localhost:5000/register', {
+			method: 'post',
+			body: JSON.stringify({name: name, email:email, password:pass}),
+			headers: {
+				'Content-type':'application/json'
+			}
+		})
+
+		result = await result.json()
+		console.warn(result);
+		result? navigate('/'): console.log('no navgate');
 	}
 
   return (
