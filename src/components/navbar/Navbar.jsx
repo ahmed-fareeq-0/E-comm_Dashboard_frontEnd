@@ -17,20 +17,25 @@ const Navbar = () => {
   
   return (
     <div>
+    
+    {/* <img src="./../../../True-Story-starring-Kevin-Hart-480c163.jpg" alt="" className="logo" /> */}
+    { auth ? 
+    
       <ul className="navbar-ul">
         <li><Link to="/">Products</Link></li>
         <li><Link to="/add">Add Product</Link></li>
         <li><Link to="/update">Update Products</Link></li>
         <li><Link to="/profile">Profile</Link></li>
-        {
-          auth ? <li><Link onClick={logout} to='/login' >Logout</Link></li>
-          : <>
-              <li><Link to="/signup">Sign Up</Link></li>
-              <li><Link to="/login">login</Link></li>
-            </>
-        }
-
+        <li><Link onClick={logout} to='/login' >Logout ({JSON.parse(auth).name}) </Link></li>
       </ul>
+    
+      : 
+      <ul className="navbar-ul">
+        <li><Link to="/signup">Sign Up</Link></li>
+        <li><Link to="/login">login</Link></li> 
+      </ul>
+    }
+
     </div>
   );
 };
