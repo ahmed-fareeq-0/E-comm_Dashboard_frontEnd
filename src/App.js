@@ -4,6 +4,7 @@ import AddProduct from "./pages/addProduct/AddProduct";
 import Navbar from "./components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signUp/SignUp";
+import ProductsList from "./pages/products/ProductsList";
 // import Private from "./components/privateComponent/Private.jsx";
 
 
@@ -14,7 +15,7 @@ const App = () => {
         <Navbar />
           <Routes>
           {/* <Route  element={<Private />} /> */}
-            <Route path="/"  element={<h1>Product</h1>} />
+            <Route path="/"  element={<ProductsList />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="/update" element={<h1>update Product</h1>} />
             <Route path="/logout" element={<h1>logout</h1>} />
