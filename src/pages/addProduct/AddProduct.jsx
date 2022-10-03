@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './styleAddProduct.scss'
+import {useNavigate} from 'react-router-dom';
 
 
 const AddProduct = () => {
@@ -9,6 +10,7 @@ const AddProduct = () => {
 	const [category, setCategory] = useState("");
 	const [company, setCompany] = useState("");
 	// const [error,setError] = useState(true)
+	const navigate = useNavigate()
 
 	const handleAddProduct = async (e) => {
 		e.preventDefault();
@@ -30,8 +32,7 @@ const AddProduct = () => {
 
 		result = await result.json()
 		console.warn(result);
-
-		
+		navigate('/')
 	}
 
   return (

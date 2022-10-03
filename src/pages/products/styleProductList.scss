@@ -1,0 +1,29 @@
+.product_list{
+	text-align: center;
+	margin-top: 50px;
+
+	h3{
+		margin: 0 0 20px 0;
+	}
+
+	ul{
+		
+		li{
+			display: inline-block;
+			border: 1px rgb(33, 29, 37) solid;
+			padding: 5px;
+			width: 150px;
+
+			button{
+				background-color: transparent;
+				border: none;
+				outline: none;
+				font-weight: 600;
+				color: red;
+				cursor: pointer;
+			}
+		}
+
+		
+	}
+}

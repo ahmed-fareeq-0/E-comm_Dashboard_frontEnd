@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import './styleProductList.scss'
 
 const ProductsList = () => {
 	const [products, setProducts] = useState([])
 
 	// run in everytime
-	useEffect(() => {
+	useEffect((e) => {
 		getProduct()
 	}, [])
 
@@ -15,17 +16,42 @@ const ProductsList = () => {
 		setProducts(result);
 		console.log(products)
 	}
+
+	const remove = async (id) => {
+		let result = await fetch(`http://localhost:5000/product/${id}`, {
+			method: 'Delete'
+		})
+
+		result = await result.json()
+		if(result){
+			getProduct()
+			alert('done')
+		}
+	}
 	
   return (
-	<div>
-	  { products.map( (item) => (
+	<div className='product_list'>
+		<h3>Product List</h3>
+		<ul>
+			<li>index</li>
+			<li>title</li>
+			<li>price</li>
+			<li>category</li>
+			<li>company</li>
+			<li>setting</li>
+		</ul>
+
+		{products.map( (item, index) => (
 		<ul key={item._id}>
+		    <li>{index+1}</li>
 			<li>{item.title}</li>
 			<li>{item.price}</li>
 			<li>{item.category}</li>
 			<li>{item.company}</li>
+			<li><button onClick={() => remove(item._id)}>remove</button></li>
 		</ul>
 	  ))}
+
 	</div>
   )
 }
