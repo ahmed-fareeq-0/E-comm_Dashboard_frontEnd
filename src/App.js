@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signUp/SignUp";
 import ProductsList from "./pages/products/ProductsList";
+import UpdateProduct from "./pages/update/UpdateProduct";
 // import Private from "./components/privateComponent/Private.jsx";
 
 
@@ -17,7 +18,7 @@ const App = () => {
           {/* <Route  element={<Private />} /> */}
             <Route path="/" exact  element={<ProductsList />} />
             <Route path="/add" element={<AddProduct />} />
-            <Route path="/update" element={<h1>update Product</h1>} />
+            <Route path="/update/:id" element={<UpdateProduct />} />
             <Route path="/logout" element={<h1>logout</h1>} />
             <Route path="/profile" element={<h1>profile</h1>} />
             

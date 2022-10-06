@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom'
 import './styleProductList.scss'
 
 const ProductsList = () => {
@@ -48,7 +49,10 @@ const ProductsList = () => {
 			<li>{item.price}</li>
 			<li>{item.category}</li>
 			<li>{item.company}</li>
-			<li><button onClick={() => remove(item._id)}>remove</button></li>
+			<li>
+			<button onClick={() => remove(item._id)}>Remove</button>
+			<Link to={'/update/'+item._id } >Update</Link>
+			</li>
 		</ul>
 	  ))}
 
