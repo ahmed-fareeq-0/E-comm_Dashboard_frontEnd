@@ -33,6 +33,17 @@ const UpdateProduct = () => {
 	const handleUpdateProduct = async (e) => {
 		e.preventDefault();
 		console.log(title,price,category,company);
+		let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+			method: 'put',
+			body: JSON.stringify({title: title, price:price, category:category, company:company}),
+			headers:{
+				'Content-Type': 'application/json'
+			},
+
+		})
+
+		result = await result.json();
+		console.log(result);
 	}
 
   return (
