@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './styleUpdateProduct.scss'
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 
 
 
@@ -12,6 +12,7 @@ const UpdateProduct = () => {
 	const [category, setCategory] = useState("");
 	const [company, setCompany] = useState("");
 	const params = useParams();
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		getProductDetails();
@@ -44,6 +45,7 @@ const UpdateProduct = () => {
 
 		result = await result.json();
 		console.log(result);
+		navigate('/')
 	}
 
   return (

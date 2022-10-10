@@ -10,7 +10,7 @@ const ProductsList = () => {
 		getProduct()
 	}, [])
 
-	// get product from back-end
+	// get product from back-end or show
 	const getProduct = async () => {
 		let result = await fetch('http://localhost:5000/products');
 		result = await result.json();
@@ -18,6 +18,7 @@ const ProductsList = () => {
 		console.log(products)
 	}
 
+	// remove product
 	const remove = async (id) => {
 		let result = await fetch(`http://localhost:5000/product/${id}`, {
 			method: 'Delete'
@@ -29,10 +30,25 @@ const ProductsList = () => {
 			alert('done')
 		}
 	}
+
+	const search = async (e) => {
+		let key = e.target.value;
+
+		if(key){
+			let result = await fetch(`http://localhost:5000/search/${key}`)
+			result = await result.json()
+			if(result){
+				setProducts(result)
+			}
+		}else{
+			getProduct()
+		}
+	}
 	
   return (
 	<div className='product_list'>
 		<h3>Product List</h3>
+		<input type='text' placeholder='search' onChange={search} />
 		<ul>
 			<li>index</li>
 			<li>title</li>
@@ -42,7 +58,7 @@ const ProductsList = () => {
 			<li>setting</li>
 		</ul>
 
-		{products.map( (item, index) => (
+		{ products.length > 0 ? products.map( (item, index) => (
 		<ul key={item._id}>
 		    <li>{index+1}</li>
 			<li>{item.title}</li>
@@ -54,7 +70,7 @@ const ProductsList = () => {
 			<Link to={'/update/'+item._id } >Update</Link>
 			</li>
 		</ul>
-	  ))}
+	  )): <h1>no reuslt found</h1> } 
 
 	</div>
   )
